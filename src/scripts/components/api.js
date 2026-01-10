@@ -67,3 +67,4 @@ export const changeLikeCardStatus = (cardId, isLiked) => {
     headers: config.headers,
   }).then(getResponseData);
 };
+
