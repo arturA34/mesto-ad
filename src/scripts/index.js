@@ -7,7 +7,7 @@
 */
 
 import { enableValidation, clearValidation } from "./components/validation.js";
-import { createCardElement, likeCard } from "./components/card.js";
+import { createCardElement } from "./components/card.js";
 import { openModalWindow, closeModalWindow, setCloseModalWindowEventListeners } from "./components/modal.js";
 import { getUserInfo, getCards, setUserInfo, setUserAvatar, addCard, deleteCardAPI, changeLikeCardStatus  } from './components/api.js';
 
