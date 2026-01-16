@@ -84,8 +84,8 @@ const createUserPreview = (userName) => {
   return element;
 };
 
-const renderLoading = (button, isLoading, defaultText) => {
-  button.textContent = isLoading ? "Сохранение..." : defaultText;
+const renderLoading = (button, isLoading, loadingText, defaultText) => {
+  button.textContent = isLoading ? loadingText : defaultText;
 };
 
 const handleLogoClick = () => {
@@ -169,7 +169,7 @@ const handleProfileFormSubmit = (evt) => {
   evt.preventDefault();
 
   const submitButton = profileForm.querySelector(".popup__button");
-  renderLoading(submitButton, true, "Сохранить");
+  renderLoading(submitButton, true, "Сохранение...", "Сохранить");
 
   setUserInfo({
     name: profileTitleInput.value,
@@ -185,7 +185,7 @@ const handleProfileFormSubmit = (evt) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(submitButton, false, "Сохранить");
+      renderLoading(submitButton, false, "Сохранение...", "Сохранить");
     });
 };
 
@@ -193,7 +193,7 @@ const handleAvatarFromSubmit = (evt) => {
   evt.preventDefault();
 
   const submitButton = avatarForm.querySelector(".popup__button");
-  renderLoading(submitButton, true, "Сохранить");
+  renderLoading(submitButton, true, "Сохранение...", "Сохранить");
 
   setUserAvatar(avatarInput.value)
     .then((userData) => {
@@ -204,7 +204,7 @@ const handleAvatarFromSubmit = (evt) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(submitButton, false, "Сохранить");
+      renderLoading(submitButton, false, "Сохранение...", "Сохранить");
     });
 };
 
@@ -213,7 +213,7 @@ const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
 
   const submitButton = cardForm.querySelector(".popup__button");
-  submitButton.textContent = "Создание...";
+  renderLoading(submitButton, true, "Создание...", "Создать");
 
   addCard({
     name: cardNameInput.value,
@@ -238,7 +238,7 @@ const handleCardFormSubmit = (evt) => {
       console.log(err);
     })
     .finally(() => {
-      submitButton.textContent = "Создать";
+      renderLoading(submitButton, false, "Создание...", "Создать");
     });
 };
 
